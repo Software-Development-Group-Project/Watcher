@@ -9,7 +9,7 @@
 * Watcher backend will be created in django
 
 ## Watcher Model
-* Watcher model contains CNN models which will be used to detect and idetify
+* Watcher model contains CNN models which will be used to detect and identify
 
 
 
