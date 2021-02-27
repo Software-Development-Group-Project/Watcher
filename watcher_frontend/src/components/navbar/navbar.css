@@ -8,14 +8,14 @@
 }
 
 .navbar-logo{
-   border-radius: 90px;
-   color: #fff;
-   height: 60px;
-   width: 60px;
-   cursor: pointer;
-   display: inline-block;
-   padding-left:8px;
-}
+    border-radius: 90px;
+    background-color: #fff;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    display: inline-block;
+    
+ }
 
 .nav-menu{
     display: grid;
@@ -38,7 +38,7 @@
     background-color: #fff;
     border-radius: 40px;
     color: black;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 .bars {
