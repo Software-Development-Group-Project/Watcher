@@ -458,5 +458,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-# End of https://www.toptal.com/developers/gitignore/api/macos,angular,react,django,python,windows,linux,playframework,node,jupyternotebooks
