@@ -49,7 +49,7 @@
 }
 
 .menu-icon{
-    display: none;
+    display: block;
 }
 
 @media screen and (max-width:1156px){
