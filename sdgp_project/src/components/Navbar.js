@@ -6,23 +6,29 @@ import { Link } from 'react-router-dom';
 class Navbar extends Component {
 
      
+    state = { clicked:false}
 
-     
+    handleClick = () => {
+        this.setState({ clicked: !this.state.clicked})
+    }
 
     render() {
         return (
             <nav className="navbar">
                 <Logo className="navbar-logo"/>
-                <ul className="nav-menu">
-                     <Link to="/">
-                        <li className="nav-links"> Home </li>
+                <div className="menu-icon" onClick={this.handleClick}>
+                    <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
+                </div>
+                <ul onClick={this.handleClick} className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
+                     <Link className="nav-links" to="/"> 
+                        <li> Home </li>
                      </Link>
                      <li className="nav-links"> Mask Detection </li>
-                     <Link to="/aboutus">
-                        <li className="nav-links"> About US </li>
+                     <Link className="nav-links" to="/aboutus">
+                        <li> About Us </li>
                      </Link>
-                     <Link to="/help">
-                        <li className="nav-links"> Help </li>
+                     <Link className="nav-links" to="/help">
+                        <li> Help </li>
                      </Link>
                 </ul>
             </nav>

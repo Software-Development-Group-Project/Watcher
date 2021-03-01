@@ -12,7 +12,7 @@ class Footer extends React.Component{
         return (
             <footer className="footer">
                 <div className="footer-left">
-                    <p className="text">Watcher is created for accademic purpose only for Informatics Institute of Technology and University of Westminster.</p>
+                    <p className="text">Watcher is created for academic purpose only for Informatics Institute of Technology and University of Westminster.</p>
                     <div class="socials">
                         <a href="https://www.facebook.com/comicbookdotcom"><Facebook className="logo"/></a>
                         <a href='https://www.instagram.com/comicbook/'><Insta className="logo"/></a>

@@ -18,7 +18,8 @@ html,*{
 /* Select all elements where the parent is footer*/
 .footer > *{
     /* grow shrink basis (takes 100% of width) */
-    flex: 1 0 100%; 
+    flex: 1 0 100%;
+    color: #999; 
 }
 .footer-left{
     margin-right: 15px;
@@ -66,7 +67,7 @@ h4{
     flex: 1 50%;
     margin-right: 15px;
 }
-.box a, li{
+.box a{
     color: #999;
 }
 .footer-bottom{
