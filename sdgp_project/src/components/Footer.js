@@ -23,32 +23,31 @@ class Footer extends React.Component{
                 </div>
                 <ul className="footer-right">
                     <li class="group-links">
-                        <h2>Features</h2>
+                        <h4>Features</h4>
                         <ul className="box">
-                            <li><a href="fg">link</a></li>
-                            <li><a href="fg">link</a></li>
-                            <li><a href="fg">link</a></li>
-                            <li><a href="fg">link</a></li>
-                            <li><a href="fh">link</a></li>
+                            <li><a href="fg">Live</a></li>
+                            <li><a href="fg">Submit</a></li>
+                            <li><Link to="/form">Login</Link></li>
+                            <li><a href="fg">Sign Up</a></li>
                         </ul>
                     </li>
                     <li className="group-links">
-                        <h2> Pages </h2>
+                        <h4>Pages</h4>
                         <ul className="box">
                           <Link to="/">
-                            <li> Home </li>
+                            <li>Home</li>
                           </Link>
-                          <li> Mask Detection </li>
+                            <li>Mask Detection</li>
                           <Link to="/aboutus">
-                             <li> About US </li>
+                             <li>About US</li>
                           </Link>
                           <Link to="/help">
-                             <li> Help </li>
+                             <li>Help</li>
                           </Link>
                         </ul>
                     </li>
                     <li className="group-links">
-                        <h2>Address</h2>
+                        <h4>Address</h4>
                         <ul className="box">
                             <li>57, Ramakrishna Road</li>
                             <li>Colombo 06</li>

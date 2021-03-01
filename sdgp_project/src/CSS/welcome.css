@@ -32,6 +32,7 @@ body{
 }
 .link:hover{
     text-decoration: underline;
+    color: white;
 }
 
 #welcome-container{
@@ -40,32 +41,35 @@ body{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 30px 20px 20px;
 }
 #welcome-container #welcome-info-container{
     flex: 3;
     text-align: left;
 }
-#welcome-container #welcome-info-container h2{
-    font-size: 35px;
+#welcome-container #welcome-info-container h1{
+    font-size: 30px;
+    margin: 10px;
 }
-#welcome-container #welcome-info-container h2 .special-text{
-    padding: 6px;
+#welcome-container #welcome-info-container h1 .special-text{
+    padding: 8px;
 }
 #welcome-container #welcome-info-container p{
     font-size: 13px;
     text-align: justify;
-    margin: 0px 20px 0px 5px;
+    margin: 0px 15px 0px 10px;
+}
+#welcome-container #welcome-info-container a{
+    color: white;
 }
 #welcome-container #welcome-img-container{
     flex: 1;
 }
 #welcome-container #welcome-img-container img{
-    width: 300px;
-    height: 270px;
+    width: 250px;
+    height: 230px;
     object-fit: cover;
 }
-
 
 @media only screen and (max-width: 1250px) {
     #welcome-container{
@@ -74,7 +78,7 @@ body{
       flex-wrap: nowrap;
       justify-content: space-around;
       align-items: center;
-      margin:100px 10px;
+      padding: 20px 
     }
     #welcome-container #welcome-info-container{
         flex: 1;
@@ -90,7 +94,7 @@ body{
         background-color: white;
     }
     #welcome-container #welcome-img-container{
-        padding:10px;
+        padding:25px;
         flex: 2;
     }
     #welcome-container #welcome-info-container .group-links .link{

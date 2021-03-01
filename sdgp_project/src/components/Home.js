@@ -1,6 +1,6 @@
 import React from 'react';
 import Welcome from './Welcome';
-import About from './AboutS';
+import AboutWatcher from './AboutWatcher';
  
 
 class Home extends React.Component{
@@ -8,7 +8,7 @@ class Home extends React.Component{
         return (
             <div>
                 <Welcome/>
-                <About/>
+                <AboutWatcher/>
             </div>
         );
     };
