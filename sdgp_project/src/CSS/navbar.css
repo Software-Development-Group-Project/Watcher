@@ -9,12 +9,12 @@
   
   .navbar-logo {
     border-radius: 90px;
-    color: rgb(253, 249, 249);
+    background-color: #fff;
     height: 60px;
     width: 60px;
     cursor: pointer;
     display: inline-block;
-    padding-left: 8px;
+    
   }
   
   .nav-menu {
