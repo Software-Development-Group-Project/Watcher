@@ -1,5 +1,5 @@
 import './App.css';
-// import Help from'./components/Help'
+import Help from'./components/Help'
 import AboutUs from './components/AboutUs'
 import Home from './components/Home'
 import Navbar from './components/Navbar';
@@ -17,7 +17,7 @@ function App() {
          <Switch>
             <Route path="/" exact component = {Home}/>
             <Route path="/aboutus" component = {AboutUs}/>
-            {/* <Route path="/help" component = {Help}/>  */}
+            <Route path="/help" component = {Help}/>  
             {/* <Route path="/form" component = {Form}/> */}
          </Switch>
          <Footer/>
