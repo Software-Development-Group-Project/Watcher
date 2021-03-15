@@ -13,9 +13,10 @@ class Welcome extends React.Component{
                         <h1>Welcome to <span class="special-text">Watcher</span></h1>
                         <p>In this hard times closing and lockdowns are not easy at all instead if people follow the rules and stop spreading virus would be the better way to live the normal  day to day life. But some people don't follow any rules and regulations for them it's easy to have some one to manage them. <span class="special-text">Watcher</span> will do that work for you!</p>
                         <div class="group-links">
-                            <a className="group-links link">Sign Up</a> 
+
+                            <li className="group-links link"><Link to="./login">Sign Up</Link></li> 
                             {/* <Link to="./form">Sign Up</Link> */}
-                            <a className="group-links link">Login</a>
+                            <li className="group-links link"><Link to='./login'>Login</Link></li>
                             {/* <Link to="./form">Login</Link> */}
                         </div>
                     </div>

@@ -22,13 +22,13 @@ function App() {
          
          {/* <Navbar/> */}
          <Navbar  />
-         <Login   />
+        
          <Switch>
             <Route path="/" exact component = {Home}/>
             <Route path="/aboutus" component = {AboutUs}/>
             <Route path="/mask" component = {Mask}/>
             <Route path="/help" component = {Help}/>  
-            {/* <Route path="/form" component = {Form}/> */}
+            <Route path="/login" component = {Login}/> 
          </Switch>
          <Footer/>
       </div>
