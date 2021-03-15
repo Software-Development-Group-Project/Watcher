@@ -23,7 +23,9 @@ class Navbar extends Component {
                      <Link className="nav-links" to="/"> 
                         <li> Home </li>
                      </Link>
-                     <li className="nav-links"> Mask Detection </li>
+                     <Link className="nav-links" to="/mask"> 
+                        <li> Mask Detection </li>
+                     </Link>
                      <Link className="nav-links" to="/aboutus">
                         <li> About Us </li>
                      </Link>
