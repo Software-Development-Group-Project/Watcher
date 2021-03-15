@@ -9,13 +9,19 @@ import Login from './components/login';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
+ // const [token, setToken] = useState('');
+
+  //const userLogin = (tok) => {
+   // setToken(tok);
+//  }
+
   return (
     <Router>
       <div className="App"> 
          
          {/* <Navbar/> */}
-         <Navbar />
-         <Login />
+         <Navbar  />
+         <Login   />
          <Switch>
             <Route path="/" exact component = {Home}/>
             <Route path="/aboutus" component = {AboutUs}/>
