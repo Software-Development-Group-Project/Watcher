@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Mask from './components/Mask'
 // import Form from './components/Form';
+import Login from './components/login';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
          
          {/* <Navbar/> */}
          <Navbar />
+         <Login />
          <Switch>
             <Route path="/" exact component = {Home}/>
             <Route path="/aboutus" component = {AboutUs}/>
