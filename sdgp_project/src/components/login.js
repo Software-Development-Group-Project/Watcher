@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import '../CSS/login.css'
 
 class Login extends Component {
 
@@ -39,21 +40,21 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Login user form</h1>
+      <div id="log">
+        <h1 id="head">Login user form</h1>
 
         <label>
           Username:
           <input type="text" name="username"
            value={this.state.credentials.username}
-           onChange={this.inputChanged}/>
+           onChange={this.inputChanged} className='filed'/>
         </label>
         <br/>
         <label>
           Password:
           <input type="password" name="password"
            value={this.state.credentials.password}
-           onChange={this.inputChanged} />
+           onChange={this.inputChanged} className='filed' />
         </label>
         <br/>
         <button onClick={this.login}>Login</button>
