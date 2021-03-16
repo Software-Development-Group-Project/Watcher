@@ -51,7 +51,7 @@ class SignUp extends Component {
         <br/>
         <label>
           Contact No:
-          <input type="text" name="username"
+          <input type="int" name="contactNo"
            value={this.state.credentials.contactNo}
            onChange={this.inputChanged}/>
         </label>
@@ -65,7 +65,7 @@ class SignUp extends Component {
         <br/>
         <label>
           Re Password:
-          <input type="password" name="password"
+          <input type="password" name="rePassword"
            value={this.state.credentials.rePassword}
            onChange={this.inputChanged} />
         </label>
