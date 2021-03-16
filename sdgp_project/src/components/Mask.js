@@ -52,7 +52,7 @@ function Mask(){
             canvasRef.current.getContext('2d').clearRect(0, 0, videoWidth, videoHeight);
             faceapi.draw.drawDetections(canvasRef.current, reSizeDetections);
             faceapi.draw.drawFaceLandmarks(canvasRef.current, reSizeDetections);
-            faceapi.draw.drawFaceExpressions(canvasRef.current, reSizeDetections);
+            //faceapi.draw.drawFaceExpressions(canvasRef.current, reSizeDetections);
 
             console.log(detections);
 
