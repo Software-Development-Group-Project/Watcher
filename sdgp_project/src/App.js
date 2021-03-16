@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Mask from './components/Mask'
 // import Form from './components/Form';
 import Login from './components/login';
+import SignUp from './components/SignUp';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/aboutus" component = {AboutUs}/>
             <Route path="/mask" component = {Mask}/>
             <Route path="/help" component = {Help}/>  
+            <Route path="/SignUp" component = {SignUp}/> 
             <Route path="/login" component = {Login}/> 
          </Switch>
          <Footer/>
