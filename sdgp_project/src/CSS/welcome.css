@@ -19,6 +19,7 @@ body{
     text-align: center;
     margin: auto;
     padding:10px;
+    margin-left: 40%;
 }
 .link{
     text-decoration: none;
@@ -29,6 +30,7 @@ body{
     cursor: pointer;
     font-size: 12px;
     margin:10px;
+    width: 130px;
 }
 .link:hover{
     text-decoration: underline;
@@ -59,7 +61,7 @@ body{
     text-align: justify;
     margin: 0px 15px 0px 10px;
 }
-#welcome-container #welcome-info-container a{
+#welcome-container #welcome-info-container li{
     color: white;
 }
 #welcome-container #welcome-img-container{

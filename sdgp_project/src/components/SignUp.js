@@ -1,7 +1,6 @@
 import React, { Component} from 'react';
-import '../CSS/login.css'
 
-class Login extends Component {
+class SignUp extends Component {
 
   state = {
     credentials: {username: '', password: ''}
@@ -40,21 +39,35 @@ class Login extends Component {
 
   render() {
     return (
-      <div id="log">
-        <h1 id="head">Login user form</h1>
+      <div>
+        <h1>Register User Form</h1>
 
         <label>
           Username:
           <input type="text" name="username"
            value={this.state.credentials.username}
-           onChange={this.inputChanged} className='filed'/>
+           onChange={this.inputChanged}/>
+        </label>
+        <br/>
+        <label>
+          Contact No:
+          <input type="int" name="contactNo"
+           value={this.state.credentials.contactNo}
+           onChange={this.inputChanged}/>
         </label>
         <br/>
         <label>
           Password:
           <input type="password" name="password"
            value={this.state.credentials.password}
-           onChange={this.inputChanged} className='filed' />
+           onChange={this.inputChanged} />
+        </label>
+        <br/>
+        <label>
+          Re Password:
+          <input type="password" name="rePassword"
+           value={this.state.credentials.rePassword}
+           onChange={this.inputChanged} />
         </label>
         <br/>
         <button onClick={this.login}>Login</button>
@@ -64,4 +77,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default SignUp;
