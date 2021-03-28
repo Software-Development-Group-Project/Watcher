@@ -15,7 +15,7 @@ class Login extends Component {
     })
     .then( data => data.json())
      
-    .catch( error => alert("hi"))
+    .catch( error => alert("error"))
   }
 
   register = event => {
@@ -30,7 +30,7 @@ class Login extends Component {
         alert(data.token);
       }
     )
-    .catch( error => alert("r"))
+    .catch( error => alert("error"))
   }
   inputChanged = event => {
     const cred = this.state.credentials;
@@ -47,14 +47,14 @@ class Login extends Component {
           Username:
           <input type="text" name="username"
            value={this.state.credentials.username}
-           onChange={this.inputChanged} className='filed'/>
+           onChange={this.inputChanged}  />
         </label>
         <br/>
         <label>
           Password:
           <input type="password" name="password"
            value={this.state.credentials.password}
-           onChange={this.inputChanged} className='filed' />
+           onChange={this.inputChanged}   />
         </label>
         <br/>
         <button onClick={this.login}>Login</button>
