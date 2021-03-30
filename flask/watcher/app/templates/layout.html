@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Watcher</title>
+    <style>
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  height:100px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navline {
+  float: right;
+  
+}
+
+.navline a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding:20px;
+  text-decoration: none;
+  height:60px;
+  margin:20px;
+  font-size: 20px;
+
+}
+
+.navline a:hover {
+  background-color: #111;
+
+  
+}
+
+.logo{
+    border-radius: 90px;
+    background-color: #fff;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    display: inline-block; 
+    margin:20px;
+}
+
+.content{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+    </style>
+  </head>
+  <body>
+    <!-- navigation bar -->
+    <ul class="navbar">
+        <li style="float:left"><img alt="logo" class="logo" src="{{ url_for('static', filename='images/face-mask.svg') }}"></li>
+        <li class="navline"><a href="{{ url_for('help') }}">Help</a></li>
+        <li class="navline"><a href="{{ url_for('home') }}">Video</a></li>
+        <li class="navline"><a href="{{ url_for('home') }}">Home</a></li>
+        
+    </ul>
+
+
+    <section class="content">
+        {% block content %}
+        {% endblock %}
+        
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer-left">
+            <p class="text">Watcher is created for academic purpose only for Informatics Institute of Technology and University of Westminster.</p>
+            <div class="socials">
+                <a href="https://www.facebook.com/comicbookdotcom">
+                    <img alt="logo" class="logo" src="{{ url_for('static', filename='images/social/facebook.svg') }}">
+                </a>
+                <a href='https://www.instagram.com/comicbook/'>
+                    <img alt="logo" class="logo" src="{{ url_for('static', filename='images/social/instagram.svg') }}">
+                </a>
+                <a href='https://www.youtube.com/user/ComicBookCom/playlists'>
+                    <img alt="logo" class="logo" src="{{ url_for('static', filename='images/social/youtube.svg') }}">
+                </a>
+                <a href='https://www.youtube.com/user/ComicBookCom/playlists'>
+                    <img alt="logo" class="logo" src="{{ url_for('static', filename='images/social/linkedin.svg') }}">
+                </a>
+                <a href='https://twitter.com/ComicBook'>
+                    <img alt="logo" class="logo" src="{{ url_for('static', filename='images/social/twitter.svg') }}">
+                </a>
+            </div>
+        </div>
+        <ul class="footer-right">
+            <li class="group-links">
+                <h4>Features</h4>
+                <ul class="box">
+                    <li><a href="fg">Live</a></li>
+                    <li><a href="fg">Submit</a></li>
+                    <li><Link to="/form">Login</Link></li>
+                    <li><a href="fg">Sign Up</a></li>
+                </ul>
+            </li>
+            <li class="group-links">
+                <h4>Pages</h4>
+                <ul class="box">
+                  <Link to="/">
+                    <li>Home</li>
+                  </Link>
+                    <li>Mask Detection</li>
+                  <Link to="/aboutus">
+                     <li>About US</li>
+                  </Link>
+                  <Link to="/help">
+                     <li>Help</li>
+                  </Link>
+                </ul>
+            </li>
+            <li class="group-links">
+                <h4>Address</h4>
+                <ul class="box">
+                    <li>57, Ramakrishna Road</li>
+                    <li>Colombo 06</li>
+                    <li>Sri Lanka</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="footer-bottom">
+            <p>All rights reserved by &copy; Watcher 2021</p>
+        </div>
+    </footer> 
+    <style>
+html,*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;    
+}
+body{
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+}
+.footer{
+    font-family: 'Poppins', sans-serif;
+    display: grid;
+    font-size: 14px;
+    display: flex;
+    flex-flow: row wrap; /* flex-direction and flex-wrap*/
+    padding: 20px 40px 10px 40px;
+    color: #fff;
+    background-color: #1b262c;
+}
+/* Select all elements where the parent is footer*/
+.footer > *{
+    /* grow shrink basis (takes 100% of width) */
+    flex: 1 0 100%;
+    color: #999; 
+}
+.footer-left{
+    margin-right: 15px;
+    margin-bottom: 20px;
+}
+.footer-left .socials{
+    text-align: left;
+} 
+.footer-left .socials .logo{
+    background-color: #ffffff;
+    border-radius: 35px;
+    margin:5px;
+    width: 25px;
+    height: 28px;
+    padding: 3px;
+}
+.footer-left .text{
+    margin: 10px auto;
+    text-align: left;
+}
+h4{
+    font-weight: 700;
+    font-size: 19px;
+    text-align: left;
+}
+.footer ul{
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+}
+.footer li{
+    line-height: 20px;
+}
+.footer li:hover{
+    text-decoration: none;
+}
+.footer a{
+    text-decoration: none;
+}
+.footer-right{
+    display: flex;
+    flex-flow: row wrap;
+}
+.footer-right > *{
+    flex: 1 50%;
+    margin-right: 15px;
+}
+.box a{
+    color: #999;
+}
+.footer-bottom{
+    text-align: center;
+    color: #999;
+    padding-top: 20px;
+}
+.footer-left p{
+    padding-right: 20%;
+    color: #999;
+}
+.socails a{
+    background: #fff;
+    width:40px;
+    height: 40px;
+    display: inline-block;
+    margin-right: 10px;
+}
+.socails a {
+    color: #fff;
+    padding: 10px 12px;
+    font-size: 20px;
+}
+@media screen and (min-width:1025px){
+    .footer-right > *{
+        flex: 1;
+    }
+    .footer-left{
+        flex: 1 0px;
+    }
+    .footer-right{
+        flex: 2 0px;
+    }
+}
+    </style>
+
+     
+</body>
+</html>
