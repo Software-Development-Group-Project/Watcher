@@ -1,0 +1,11 @@
+python3 required
+
+Install Keras
+pip install Keras
+
+Install tensorflow
+pip install tensorflow
+
+If any error occured with tensorflow
+https://github.com/tensorflow/tensorflow/issues/38012
+pip install tensorflow --upgrade --force-reinstall
