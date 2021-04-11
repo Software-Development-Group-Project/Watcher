@@ -9,7 +9,7 @@
 
 ## Watcher Backend
 
-- Watcher backend will be created in django
+- Watcher backend will be created in flask
 
 ## Watcher Model
 
