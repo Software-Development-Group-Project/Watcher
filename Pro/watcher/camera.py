@@ -1,7 +1,16 @@
 # import the necessary packages
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 from keras.models import load_model
 import cv2
 import numpy as np
+
+import tensorflow as tf
+tf.autograph.set_verbosity(0)
+
+import logging
+logging.getLogger("tensorflow").setLevel(logging.ERROR)
 
 # importing cascades xml
 face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
@@ -22,17 +31,13 @@ class Camera:
         ret, img = self.video.read()
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)        
-
         for (x, y, w, h) in faces:
-            # cv2.rectangle(img, (x, y), (x + w, x + h), (255, 0, 0), 2)
-            face_img=gray[y:y+w,x:x+w]
-            resized=cv2.resize(face_img,(100,100))
+            resized=cv2.resize(gray,(100,100))
             normalized=resized/255.0
             reshaped=np.reshape(normalized,(1,100,100,1))
             result=model.predict(reshaped)
-
             label=np.argmax(result,axis=1)[0]
-        
+            # print(label)
             cv2.rectangle(img,(x,y),(x+w,y+h),color_dict[label],2)
             cv2.rectangle(img,(x,y-40),(x+w,y),color_dict[label],-1)
             cv2.putText(img, labels_dict[label], (x, y-10),cv2.FONT_HERSHEY_SIMPLEX,0.8,(255,255,255),2)
