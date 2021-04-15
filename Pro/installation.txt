@@ -20,3 +20,5 @@ https://stackoverflow.com/questions/2953834/windows-path-in-python
 https://stackoverflow.com/questions/58020062/how-to-specify-file-path-in-jupyter-notebook
 https://stackoverflow.com/questions/26505958/why-cant-python-import-image-from-pil
 https://stackoverflow.com/questions/56397831/what-does-output-dim-in-keras-dense-mean
+
+env\Scripts\activate.bat

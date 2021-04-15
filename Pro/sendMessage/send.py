@@ -19,10 +19,14 @@ def send_email(subject, message, to):
 
     server.quit()
 
+def create_mail(name, to):
+    heading = " Watcher (alert) "
+    message ="{}, put your mask immediately" .format(name)
+    send_email(heading, message, to)
+
 
 if __name__ == "__main__":
-    subject1 = "alert"
-    message1 = "put your mask"
-    to1 = "thuwarakan123@gmail.com"
-
-    send_email(subject1, message1, to1)
+    name = "vithushigan"
+    to1 = "mailto:jayavithushigan@gmail.com"
+    
+    create_mail(name, to1)
