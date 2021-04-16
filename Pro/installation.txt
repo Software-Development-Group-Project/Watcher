@@ -22,3 +22,4 @@ https://stackoverflow.com/questions/26505958/why-cant-python-import-image-from-p
 https://stackoverflow.com/questions/56397831/what-does-output-dim-in-keras-dense-mean
 
 env\Scripts\activate.bat
+face_recognition.py
