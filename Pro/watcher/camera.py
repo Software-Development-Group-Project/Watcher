@@ -1,22 +1,22 @@
 # import the necessary packages
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-from keras.models import load_model
 import cv2
 import numpy as np
-
 import tensorflow as tf
-tf.autograph.set_verbosity(0)
-
 import logging
+from keras.models import load_model
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+tf.autograph.set_verbosity(0)
 logging.getLogger("tensorflow").setLevel(logging.ERROR)
 
 # importing cascades xml
 face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
 model = load_model('cascades/model-017.model')
-labels_dict={0:'MASK',1:'NO MASK'}
-color_dict={0:(0,255,0),1:(0,0,255)}
+labels_dict = {0: 'MASK', 1: 'NO MASK'}
+color_dict = {0: (0, 255, 0), 1: (0, 0, 255)}
+
 
 class Camera:
 
@@ -30,8 +30,9 @@ class Camera:
         # --- Earlier version ----
         ret, img = self.video.read()
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        faces = face_cascade.detectMultiScale(gray, 1.3, 5)        
+        faces = face_cascade.detectMultiScale(gray, 1.3, 5)
         for (x, y, w, h) in faces:
+<<<<<<< HEAD
             resized=cv2.resize(gray,(100,100))
             normalized=resized/255.0
             reshaped=np.reshape(normalized,(1,100,100,1))
@@ -42,5 +43,16 @@ class Camera:
             cv2.rectangle(img,(x,y-40),(x+w,y),color_dict[label],-1)
             cv2.putText(img, labels_dict[label], (x, y-10),cv2.FONT_HERSHEY_SIMPLEX,0.8,(255,255,255),2)
             
+=======
+            resized = cv2.resize(gray, (100, 100))
+            normalized = resized / 255.0
+            reshaped = np.reshape(normalized, (1, 100, 100, 1))
+            result = model.predict(reshaped)
+            label = np.argmax(result, axis=1)[0]
+            # print(label)
+            cv2.rectangle(img, (x, y), (x + w, y + h), color_dict[label], 2)
+            cv2.rectangle(img, (x, y - 40), (x + w, y), color_dict[label], -1)
+            cv2.putText(img, labels_dict[label], (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
+>>>>>>> a35d5cbb03eb3bfae41c6513311360eb8e5c3893
         ret, jpeg = cv2.imencode('.jpg', img)
         return jpeg.tobytes()
