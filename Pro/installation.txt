@@ -23,3 +23,4 @@ https://stackoverflow.com/questions/56397831/what-does-output-dim-in-keras-dense
 https://stackoverflow.com/questions/56330561/pil-image-fromarrayimg-astypeuint8-mode-rgb-returns-grayscale-image
 
 env\Scripts\activate.bat
+face_recognition.py

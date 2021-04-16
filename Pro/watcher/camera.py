@@ -63,6 +63,6 @@ class Camera:
             # cv2.rectangle(img, (x, y), (x + w, y + h), color_dict[label], 2)
             # # cv2.rectangle(img, (x, y - 40), (x + w, y), color_dict[label], -1)
             # cv2.putText(img, labels_dict[label], (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)        
-
+            
         ret, jpeg = cv2.imencode('.jpg', img)
         return jpeg.tobytes()
