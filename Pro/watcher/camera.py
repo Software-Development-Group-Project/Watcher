@@ -4,11 +4,12 @@ import cv2
 import numpy as np
 import tensorflow as tf
 import logging
+import smtplib
+from email.message import EmailMessage
 from keras.models import load_model
 from PIL import Image
 from time import sleep
-import smtplib
-from email.message import EmailMessage
+from datetime import datetime
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
@@ -24,7 +25,9 @@ labels_dict = {0: 'MASK', 1: 'NO MASK'}
 color_dict = {0: (0, 255, 0), 1: (0, 0, 255)}
 classes={0:"jenoshanan", 1:'nirahulan', 2:'thuwarakan', 3:'vithu'} 
 mail={0:"jenoshanan.2019695@iit.ac.lk", 1:"nirahulan.20191022@iit.ac.lk", 2:"thuwarakan123@gmail.com", 3:"vithushigan.20191148@iit.ac.lk"}
-count={0:0, 1:0, 2:0, 3:0}
+# count={0:0, 1:0, 2:0, 3:0}
+mailed_time={0:datetime.now(), 1:datetime.now(), 2:datetime.now(), 3:datetime.now()}
+detected_time={0:datetime.now(), 1:datetime.now(), 2:datetime.now(), 3:datetime.now()}
 
 def send_email(subject, message, to):
         msg = EmailMessage()
@@ -47,7 +50,7 @@ def create_mail(name, to):
         admin = "thuwarakan123@gmail.com"
         heading = " Watcher (alert) "
         message ="{}, put your mask immediately" .format(name)
-        adminMessage = "{} is not wear a mask, please check" .format(name)
+        adminMessage = "{} is not wearing a mask, please check" .format(name)
         send_email(heading, message, to)
         send_email(heading, adminMessage, admin)
 
@@ -85,20 +88,29 @@ class Camera:
                     img_array = np.array(resized_int_face_img)
                     img_array = np.expand_dims(img_array, axis=0)
                     pred = face_recog_model.predict(img_array)
-                    label = classes[pred.argmax()]
-                    to = mail[pred.argmax()]
+                    key = pred.argmax()
+                    label = classes[key]
+                    to = mail[key]
+                    detected_time[key] = datetime.now()
 
-        
                 cv2.putText(img, str(label), (x, y), cv2.FONT_HERSHEY_SIMPLEX, .7, (0, 255, 0), 2)
-                count[pred.argmax()] = count[pred.argmax()] + 1
-                if(count[pred.argmax()] == 1 or count[pred.argmax()] % 200 == 0 ):
-                    create_mail(label, to)
-                 
-              
+                
+                # count[key] = count[key] + 1
+                # count[key] == 1 or count[key] % 200 == 0 
+                
+                difference = detected_time[key] - mailed_time[key]
+                difference_in_sec = difference.total_seconds()
+                minutes = divmod(difference_in_sec, 60)[0]
+                
+                print("min - " + str(minutes))
 
+                if(minutes>=15):
+                    create_mail(label, to)                
+                    mailed_time[key] = datetime.now()
+                
 
             # cv2.rectangle(img, (x, y), (x + w, y + h), color_dict[label], 2)
-            # # cv2.rectangle(img, (x, y - 40), (x + w, y), color_dict[label], -1)
+            # cv2.rectangle(img, (x, y - 40), (x + w, y), color_dict[label], -1)
             # cv2.putText(img, labels_dict[label], (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)        
             
         ret, jpeg = cv2.imencode('.jpg', img)
