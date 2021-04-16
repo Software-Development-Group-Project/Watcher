@@ -7,6 +7,8 @@ import logging
 from keras.models import load_model
 from PIL import Image
 from time import sleep
+import smtplib
+from email.message import EmailMessage
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
@@ -21,6 +23,33 @@ face_recog_model = load_model('cascades/face_recognition.h5')
 labels_dict = {0: 'MASK', 1: 'NO MASK'}
 color_dict = {0: (0, 255, 0), 1: (0, 0, 255)}
 classes={0:"jenoshanan", 1:'nirahulan', 2:'thuwarakan', 3:'vithu'} 
+mail={0:"jenoshanan.2019695@iit.ac.lk", 1:"nirahulan.20191022@iit.ac.lk", 2:"thuwarakan123@gmail.com", 3:"vithushigan.20191148@iit.ac.lk"}
+count={0:0, 1:0, 2:0, 3:0}
+
+def send_email(subject, message, to):
+        msg = EmailMessage()
+        msg.set_content(message)
+        msg['subject'] = subject
+        msg['to'] = to
+
+        user = "watchera2019@gmail.com"
+        msg['from'] = user
+        password = "jsexodmjokkpcebg"
+
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(user, password)
+        server.send_message(msg)
+
+        server.quit()    
+
+def create_mail(name, to):
+        admin = "thuwarakan123@gmail.com"
+        heading = " Watcher (alert) "
+        message ="{}, put your mask immediately" .format(name)
+        adminMessage = "{} is not wear a mask, please check" .format(name)
+        send_email(heading, message, to)
+        send_email(heading, adminMessage, admin)
 
 class Camera:
 
@@ -57,8 +86,16 @@ class Camera:
                     img_array = np.expand_dims(img_array, axis=0)
                     pred = face_recog_model.predict(img_array)
                     label = classes[pred.argmax()]
+                    to = mail[pred.argmax()]
+
         
                 cv2.putText(img, str(label), (x, y), cv2.FONT_HERSHEY_SIMPLEX, .7, (0, 255, 0), 2)
+                count[pred.argmax()] = count[pred.argmax()] + 1
+                if(count[pred.argmax()] == 1 or count[pred.argmax()] % 200 == 0 ):
+                    create_mail(label, to)
+                 
+              
+
 
             # cv2.rectangle(img, (x, y), (x + w, y + h), color_dict[label], 2)
             # # cv2.rectangle(img, (x, y - 40), (x + w, y), color_dict[label], -1)
