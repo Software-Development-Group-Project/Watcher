@@ -41,6 +41,12 @@
             </article>
         </div>
     </div>
+    <div id="video">
+        <video width="320" height="240" autoplay>
+            <source src="{{ url_for('static', filename='video/watcher_intro.mp4') }}" type="video/mp4">
+        </video>
+
+    </div>
 </div>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
@@ -154,6 +160,17 @@
 
 #head1{
     margin-bottom: 12px;
+}
+
+#video{
+    margin-bottom: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 50px;
+    padding: 20px;
+    width: 680px;
+    height: 520px;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>
 {% endblock content %}
