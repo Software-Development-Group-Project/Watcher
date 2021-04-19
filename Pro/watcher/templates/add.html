@@ -6,28 +6,32 @@
 <form action="/savedetails" method="post">
   <table>
     <tr>
-      <td>Name</td>
+      <th>Name</th>
       <td><input type="text" name="name" /></td>
     </tr>
     <tr>
-      <td>Email</td>
+      <th>Email</th>
       <td><input type="email" name="email" /></td>
     </tr>
     <tr>
-      <td>Address</td>
+      <th>Address</th>
       <td><input type="text" name="address" /></td>
     </tr>
     <tr>
-      <td>Number</td>
+      <th>Number</th>
       <td><input type="text" name="number" /></td>
     </tr>
     <tr>
       <td><input type="submit" value="Submit" /></td>
+      <td id="check"><input type="reset"  value="Reset"></td>
     </tr>
   </table>
 </form>
 </div>
 <style>
+  #check{
+     
+  }
   table {
     border-collapse: collapse;
     border-spacing: 0;
