@@ -26,11 +26,24 @@
       <td id="check"><input type="reset"  value="Reset"></td>
     </tr>
   </table>
+  
 </form>
 </div>
+<button id="right"><a href="{{ url_for('view') }}">Back</a></button>
 <style>
-  #check{
+  button{
+    padding: 15px 30px;
+    color: #ffffff;
+    background-color: rgb(2, 8, 6);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    border-radius: 15px;
+    margin-left: 45%;
      
+  }
+  a{
+    text-decoration: none;
+    color: #ffffff ;
   }
   table {
     border-collapse: collapse;
