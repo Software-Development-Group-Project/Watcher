@@ -5,7 +5,7 @@ import threading
 
 password = "jsexodmjokkpcebg"
 user = "watchera2019@gmail.com"
-admin = "nirahulan.20191022@iit.ac.lk"
+admin = "thuwarakan123@gmail.com"
 
 
 class MailServer:
