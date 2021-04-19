@@ -3,131 +3,128 @@
 {% block content %}
 
 <div class="container1" id="feature">
-    
-        <div class="col-sm0">
-            <h1 id="heading1"> Features of Watcher </h1>
-        </div>     
-        <div class="col-sm1"> 
-            <div style="width:300px; margin:auto; font-size:15px;">
-                <img src = "{{ url_for('static', filename='images/mask.png') }}" alt="alert"/> 
-                <p style="margin-top: 10px;margin-bottom: 10px;"> <b>Check People </b></p>
-                <p style ="text-align: justify;">This web cam can check whether you're wearing mask or not</p>
-            </div>
+
+    <div class="col-sm0">
+        <h1 id="heading1"> Features of Watcher </h1>
+    </div>
+    <div class="col-sm1">
+        <div style="width:300px; margin:auto; font-size:15px;">
+            <img src = "{{ url_for('static', filename='images/mask.png') }}" alt="alert"/>
+            <p style="margin-top: 10px;margin-bottom: 10px;"> <b>Check People </b></p>
+            <p style ="text-align: justify;">This web cam can check whether you're wearing mask or not</p>
         </div>
-        <div class="col-sm2">
-            <div style="width:300px; margin:auto; font-size:15px;">
-                <img src = "{{ url_for('static', filename='images/alert.png') }}" alt="alert"/> 
-                <p style="margin-top: 10px;margin-bottom: 10px;"> <b>Alert the User </b></p>
-                <p style ="text-align: justify;">the system detect people who are not
-                    wear mask and it will alert the admin</p>
-            </div>
+    </div>
+    <div class="col-sm2">
+        <div style="width:300px; margin:auto; font-size:15px;">
+            <img src = "{{ url_for('static', filename='images/alert.png') }}" alt="alert"/>
+            <p style="margin-top: 10px;margin-bottom: 10px;"> <b>Alert the User </b></p>
+            <p style ="text-align: justify;">the system detect people who are not
+                wear mask and it will alert the admin</p>
         </div>
-        <div class="col-sm3">
-            <div style="width:300px; margin:auto; font-size:15px;">
-                <img src = "{{ url_for('static', filename='images/person.png') }}" alt="alert"/> 
-                <p style="margin-top: 10px;margin-bottom: 10px;"> <b> Alert the Person </b></p>
-                <p style ="text-align: justify;">if the system can identify the person who is 
-                    not wear a mask then it can alert that person also</p>
-            </div>
+    </div>
+    <div class="col-sm3">
+        <div style="width:300px; margin:auto; font-size:15px;">
+            <img src = "{{ url_for('static', filename='images/person.png') }}" alt="alert"/>
+            <p style="margin-top: 10px;margin-bottom: 10px;"> <b> Alert the Person </b></p>
+            <p style ="text-align: justify;">if the system can identify the person who is
+                not wear a mask then it can alert that person also</p>
         </div>
-    
+    </div>
+
 </div>
  
 <div class="container2" id="feature">
-     
-        <div class="col-sm01"><h1 id="heading1"> Use Case </h1></div>     
-        <div class="col-sm11"> 
-            <div style="width:300px;margin:auto;font-size:15px">
-                <h3 style="margin-top: 10px;margin-bottom: 10px;">University</h3>
-                <img src=  "{{ url_for('static', filename='images/uni.jpg') }}" width = "300px" height = "250px" alt = "a university" />
-                <p style ="text-align:justify">The Face Mask Detection System can be used at university to check students and staffs. 
-                   Our system is best fit for the university’s because the management of university already 
-                   have the data of the students and the staffs so If they do not wear a mask we can simply 
-                   identify them and alert.Normally lot of people are connect with university daily so Security 
-                   system like watcher will defiantly help the management to manage large amount of student</p> 
-            </div>
+
+    <div class="col-sm01"><h1 id="heading1"> Use Case </h1></div>
+    <div class="col-sm11">
+        <div style="width:300px;margin:auto;font-size:15px">
+            <h3 style="margin-top: 10px;margin-bottom: 10px;">University</h3>
+            <img src=  "{{ url_for('static', filename='images/uni.jpg') }}" width = "300px" height = "250px" alt = "a university" />
+            <p style ="text-align:justify">The Face Mask Detection System can be used at university to check students and staffs.
+               Our system is best fit for the university’s because the management of university already
+               have the data of the students and the staffs so If they do not wear a mask we can simply
+               identify them and alert.Normally lot of people are connect with university daily so Security
+               system like watcher will defiantly help the management to manage large amount of student</p>
         </div>
-        <div class="col-sm21">
-            <div style="width:300px;margin:auto;font-size:15px">
-                <h3 style="margin-top: 10px;margin-bottom: 10px;">Office</h3>
-                <img src=  "{{ url_for('static', filename='images/ofi.jpg') }}" width = "300px" height = "250px" alt = "a office" /> 
-                <p style ="text-align:justify;">The Face Mask Detection System can be used at offices because it will help to identify 
-                    employees who are not wear a mask and alert them and also the management. Watcher will 
-                    help to ensure the safety of all employees because that is the most important thing in 
-                    this situation, and we can use watcher in the entrance also to check them </p>
-                 
-            </div>   
+    </div>
+    <div class="col-sm21">
+        <div style="width:300px;margin:auto;font-size:15px">
+            <h3 style="margin-top: 10px;margin-bottom: 10px;">Office</h3>
+            <img src=  "{{ url_for('static', filename='images/ofi.jpg') }}" width = "300px" height = "250px" alt = "a office" />
+            <p style ="text-align:justify;">The Face Mask Detection System can be used at offices because it will help to identify
+                employees who are not wear a mask and alert them and also the management. Watcher will
+                help to ensure the safety of all employees because that is the most important thing in
+                this situation, and we can use watcher in the entrance also to check them </p>
         </div>
+    </div>
      
 </div>
  
 <style>
- 
+    #heading1 {
+      margin-top: 20px;
+      margin-bottom: 30px;
+      text-align: center;
+      font-family:'arial';
+      font-size: 40px;
+    }
 
-#heading1 {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-family:'arial';
-  font-size: 40px;
-}
+    .col-sm0 {
+        grid-area: first;
+    }
+    .col-sm1 {
+        grid-area: sec1;
+    }
+    .col-sm2 {
+        grid-area: sec2;
+    }
+    #col-sm3 {
+        grid-area: sec3;
+    }
 
-.col-sm0 { 
-    grid-area: first;
-}
-.col-sm1 { 
-    grid-area: sec1; 
-}
-.col-sm2 { 
-    grid-area: sec2; 
-}
-#col-sm3 { 
-    grid-area: sec3; 
-}
+    .container1 {
+      margin-bottom: 80px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      margin-top: 30px;
+      padding-bottom: 20px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      margin-left: 100px;
+      margin-right: 100px;
+      display: grid;
+      grid-template-areas:
+        'first first first'
+        'sec1 sec2 sec3';
+    }
 
-.container1 {
-  margin-bottom: 80px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-top: 30px;
-  padding-bottom: 20px;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-left: 100px;
-  margin-right: 100px;
-  display: grid;
-  grid-template-areas:
-    'first first first'
-    'sec1 sec2 sec3';
-}
+    .col-sm01 {
+        grid-area: third;
+    }
+    .col-sm11 {
+        grid-area: fo1;
+    }
+    .col-sm21 {
+        grid-area: fo2;
+    }
 
-.col-sm01 { 
-    grid-area: third;
-}
-.col-sm11 { 
-    grid-area: fo1; 
-}
-.col-sm21 { 
-    grid-area: fo2; 
-}
+    .container2 {
+      margin-bottom: 80px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      margin-top: 30px;
+      padding-bottom: 20px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      padding-bottom: 35px;
+      margin-left: 100px;
+      margin-right: 100px;
+      display: grid;
+      grid-template-areas:
+        'third third'
+        'fo1 fo2';
+    }
 
-.container2 {
-  margin-bottom: 80px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-top: 30px;
-  padding-bottom: 20px;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  padding-bottom: 35px;
-  margin-left: 100px;
-  margin-right: 100px;
-  display: grid;
-  grid-template-areas:
-    'third third'
-    'fo1 fo2';
-}
-
-.container2 img{
-    margin-bottom: 15px;
-}
+    .container2 img{
+        margin-bottom: 15px;
+    }
 </style>
 {% endblock content %}
