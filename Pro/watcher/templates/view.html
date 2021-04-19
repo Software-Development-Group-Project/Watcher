@@ -5,11 +5,11 @@
 <div class="main-block">
 <table>
   <thead>
-    <td>ID</td>
-    <td>Name</td>
-    <td>Email</td>
-    <td>Address</td>
-    <td>Number</td>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Number</th>
   </thead>
 
   {% for row in rows %}
@@ -24,12 +24,14 @@
 
   {% endfor %}
 </table>
-<br /><br />
 
-
-<a href="/add">Add a new member </a>
-<a href="/delete">Delete member</a>
 </div>
+
+
+<button><a href="{{ url_for('add') }}">Add a new member </a></button>
+<button id="right"><a href="{{ url_for('delete') }}">Delete member</a></button>
+
+
 <style>
   .main-block {
     display: flex;
@@ -39,15 +41,14 @@
     align-self: center;
     min-height: 55vh;
     background: #ffffff;
+    margin-left: 40px;
+    margin-right: 40px;
   }
   a{
     text-decoration: none;
-    color: rgb(8, 50, 91);
+    color: #ffffff ;
   }
-  a:hover{
-    text-decoration: none;
-    color: rgb(164, 21, 116);
-  }
+   
   table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -61,5 +62,19 @@
   }
   
   tr:nth-child(even){background-color: #f2f2f2}
+
+  button{
+    padding: 15px;
+    color: #ffffff;
+    background-color: rgb(2, 8, 6);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    border-radius: 10px;
+    margin-left: 40px;
+  }
+  #right{
+    float: right;
+    margin-right: 40px;
+  }
   </style>
 {% endblock content %}
