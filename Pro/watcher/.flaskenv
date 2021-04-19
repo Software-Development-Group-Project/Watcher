@@ -1,0 +1,2 @@
+FLASK_APP=watcher.py
+FLASK_ENV=development

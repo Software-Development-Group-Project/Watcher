@@ -1,0 +1,43 @@
+{% extends "layout.html" %} {% block content %}
+
+<h3>Employee Information</h3>
+<table>
+  <thead>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Email</td>
+    <td>Address</td>
+    <td>Number</td>
+  </thead>
+
+  {% for row in rows %}
+
+  <tr>
+    <td>{{row["id"]}}</td>
+    <td>{{row["name"]}}</td>
+    <td>{{row["email"]}}</td>
+    <td>{{row["address"]}}</td>
+    <td>{{row["number"]}}</td>
+  </tr>
+
+  {% endfor %}
+</table>
+<br /><br />
+
+<a href="/">Go back to home page</a>
+<style>
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2}
+  </style>
+{% endblock content %}
