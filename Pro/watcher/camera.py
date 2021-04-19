@@ -104,7 +104,7 @@ class Camera:
                 
                 print("min - " + str(minutes))
 
-                if(minutes>=0):
+                if(minutes>=5):
                     create_mail(label, to)                
                     mailed_time[key] = datetime.now()
                 
