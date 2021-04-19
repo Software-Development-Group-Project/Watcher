@@ -1,6 +1,8 @@
 {% extends "layout.html" %} {% block content %}
-
-<h3>Employee Information</h3>
+<center>
+<h3>Members Information</h3>
+</center>
+<div class="main-block">
 <table>
   <thead>
     <td>ID</td>
@@ -24,8 +26,28 @@
 </table>
 <br /><br />
 
-<a href="/">Go back to home page</a>
+
+<a href="/add">Add a new member </a>
+<a href="/delete">Delete member</a>
+</div>
 <style>
+  .main-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    min-height: 55vh;
+    background: #ffffff;
+  }
+  a{
+    text-decoration: none;
+    color: rgb(8, 50, 91);
+  }
+  a:hover{
+    text-decoration: none;
+    color: rgb(164, 21, 116);
+  }
   table {
     border-collapse: collapse;
     border-spacing: 0;

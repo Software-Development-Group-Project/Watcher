@@ -1,11 +1,15 @@
 {% extends "layout.html" %} {% block content %}
+<center>
+<h2>Remove member from the list</h2>
+</center>
+<div class="main-block">
 
-<h3>Remove Employee from the list</h3>
 
 <form action="/deleterecord" method="post">
-  Employee Id <input type="text" name="id" />
+  <input type="text" name="id" placeholder="Type here Member ID..."/>
   <input type="submit" value="Submit" />
 </form>
+</div>
 <style>
   html, body {
   min-height: 100%;
@@ -15,10 +19,10 @@
   font-size: 14px;
   color: #666;
   }
-  h1 {
+  h2 {
   margin: 0 0 20px;
   font-weight: 400;
-  color: #1c87c9;
+  color: #1b262c;
   }
   p {
   margin: 0 0 5px;
@@ -29,8 +33,8 @@
   justify-content: center;
   align-items: center;
   align-self:center;
-  min-height: 100vh;
-  background: #1c87c9;
+  min-height: 50vh;
+  background: #ffffff;
   }
   form {
   padding: 25px;
@@ -38,39 +42,30 @@
   align-items: center;
   box-shadow: 0 2px 5px #f5f5f5; 
   background: #f5f5f5; 
-  }
-  .fas {
-  margin: 25px 10px 0;
-  font-size: 72px;
-  color: #fff;
-  }
-  .fa-envelope {
-  transform: rotate(-20deg);
-  }
-  .fa-at , .fa-mail-bulk{
-  transform: rotate(10deg);
+  border-radius:40px;
   }
   input, textarea {
   width: calc(100% - 18px);
   padding: 8px;
   margin-bottom: 20px;
-  border: 1px solid #1c87c9;
+  border: 1px solid #1b262c;
   outline: none;
   }
   input::placeholder {
-  color: #666;
+  color: rgb(230, 230, 230);
   }
   input {
   width: 100%;
   padding: 10px;
   border: none;
-  background: #1c87c9; 
+  background: #1b262c; 
   font-size: 16px;
   font-weight: 400;
   color: #fff;
+  border-radius:40px;
   }
   input:hover {
-  background: #2371a0;
+  background: #1e2022;
   }    
   @media (min-width: 568px) {
   .main-block {
@@ -78,18 +73,6 @@
   }
   .left-part, form {
   width: 50%;
-  }
-  .fa-envelope {
-  margin-top: 0;
-  margin-left: 20%;
-  }
-  .fa-at {
-  margin-top: -10%;
-  margin-left: 65%;
-  }
-  .fa-mail-bulk {
-  margin-top: 2%;
-  margin-left: 28%;
   }
   }
 </style>
