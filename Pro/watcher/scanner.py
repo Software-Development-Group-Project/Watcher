@@ -95,6 +95,6 @@ class Scanner:
             mailed_time[id] = datetime.now()
             count[id] += 1
 
-        elif count[id] >= 0 and minutes >= 0.1:
+        elif count[id] >= 0 and minutes >= 10:
             self.create_alert_thread(name, to)
             mailed_time[id] = datetime.now()
