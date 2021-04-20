@@ -164,9 +164,13 @@ def loginValidation():
              
             for row in rows :
                  
-                if (username == row["username"]) and (password == row["password"]):                      
+                if (username == row["username"]) and (password == row["password"]):    
+                    if (len(username) >0 and len(password)>0):               
                         session['ID'] = rows[0][0]
-                        return redirect('/home')  
+                        return redirect('/home')
+                    else :
+                        alert = "sorry , you have to enter user credentials"  
+                        return render_template("login.html", alert=alert)
                 else :
                         alert = "sorry , you have entered invalid credentials try again"  
                         return render_template("login.html", alert=alert)
