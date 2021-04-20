@@ -1,36 +1,38 @@
 {% extends "layout.html" %} {% block content %}
 <center>
-<h3>Members Information</h3>
+  <h3>Members Information</h3>
 </center>
 <div class="main-block">
-<table>
-  <thead>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Address</th>
-    <th>Number</th>
-  </thead>
+  <table>
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Number</th>
+    </thead>
 
-  {% for row in rows %}
+    {% for row in rows %}
 
-  <tr>
-    <td>{{row["id"]}}</td>
-    <td>{{row["name"]}}</td>
-    <td>{{row["email"]}}</td>
-    <td>{{row["address"]}}</td>
-    <td>{{row["number"]}}</td>
-  </tr>
+    <tr>
+      <td>{{row["id"]}}</td>
+      <td>{{row["name"]}}</td>
+      <td>{{row["email"]}}</td>
+      <td>{{row["address"]}}</td>
+      <td>{{row["number"]}}</td>
+    </tr>
 
-  {% endfor %}
-</table>
-
+    {% endfor %}
+  </table>
 </div>
-
-
-<button><a href="{{ url_for('add') }}">Add a new member </a></button>
-<button id="right"><a href="{{ url_for('delete') }}">Delete member</a></button>
-
+<center>
+  <div class="block">
+    <button><a href="{{ url_for('add') }}">Add a new member </a></button>
+    <button id="right">
+      <a href="{{ url_for('delete') }}">Delete member</a>
+    </button>
+  </div>
+</center>
 
 <style>
   .main-block {
@@ -39,49 +41,54 @@
     justify-content: center;
     align-items: center;
     align-self: center;
-    min-height: 55vh;
+    min-height: 50vh;
     background: #ffffff;
     margin-left: 100px;
     margin-right: 100px;
   }
-  a{
+  a {
     text-decoration: none;
-    color: #ffffff ;
+    color: #ffffff;
   }
-   
   table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
     border: 1px solid #ddd;
   }
-  
-  th, td {
+
+  th,
+  td {
     text-align: center;
     padding: 8px;
   }
-  
-  tr:nth-child(even){
-    background-color: #f2f2f2
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
   }
 
-  button{
+  button {
     padding: 15px;
     color: #ffffff;
     background-color: rgb(2, 8, 6);
     font-family: Arial, Helvetica, sans-serif;
     font-size: medium;
     border-radius: 15px;
-    margin-left: 100px;
+    margin:10px 300px 10px 300px;
   }
-  #right{
-    float: right;
-    margin-right: 100px;
-  }
-  th{
+  th {
     background-color: black;
     color: #ffffff;
     text-align: center;
   }
-  </style>
+  @media screen and (min-width:900px){
+    .block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-self: center;
+      background: #ffffff;
+    }
+  }
+</style>
 {% endblock content %}

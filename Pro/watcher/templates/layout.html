@@ -63,6 +63,41 @@
             margin-top: 30px;
             margin-bottom: 30px;
         }
+        @media screen and (max-width: 1000px) {
+            .navbar {
+              position: relative;
+            }
+          
+            .navline {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              position: absolute;
+              top: 90px;
+              left: -100%;
+              opacity: 2;
+              transition: all 0.5s ease;
+            }
+          
+            .nav {
+              background: #21323a;
+              left: 0;
+              opacity: 3;
+              transition: all 0.5s ease;
+              z-index: 1;
+            }
+        
+            
+          
+            .nav-links {
+              text-align: center;
+              padding: 1rem;
+              width: 100%;
+              display: table;
+              margin: 0;
+            }
+          
+          }
     </style>
   </head>
   <body>
@@ -243,6 +278,7 @@
             .footer-right{
                 flex: 2 0px;
             }
+            
         }
     </style>
 </body>
