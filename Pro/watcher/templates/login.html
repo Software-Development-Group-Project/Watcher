@@ -1,146 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
-  </head>
-  <body>
-    <div class="login">
-      <div class="form">
-        <form class="form" method="post" action="/loginValidation">
-          <label>user name</label><br />
-          <input type="text" class="form" name="username" /><br />
-          <label>Password</label><br />
-          <input
-            type="password"
-            class="form"
-            name="password"
-          /><br /><br /><br />
-          <input type="submit" class="btn btn" value="Login" />
-        </form>
+    <link rel="stylesheet" href="form.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="formwrap">
+                <br><br>
+                <h1>Login</h1>
+                <br><br>
+                <form class="form" method="post" action="/loginValidation">
+                <label>user name</label><br />
+                <input type="text" class="form" name="username" placeholder="User Name"/><br />
+                <label>Password</label><br />
+                <input type="password" class="form" name="password" placeholder="Password"/>
+                <br /><br /><br />
+                <input type="submit" class="btn btn" value="Login" />
+                </form>
 
-        <p>Not Registered ? <a href="/signUp">Sign Up</a></p>
-      </div>
+                <p>Not Registered ? <a href="/signUp">Sign Up</a></p>
+                <style>
+                *{
+                    /* allows us to include the padding and border in an element's total width and height. */
+                    box-sizing:border-box;
+                    margin:0;
+                    padding:0;
+                }
+                body{
+                    font-family: 'Raleway', sans-serif;
+                    background-color:#344a72;
+                    height: 100vh;
+                }
+                a{
+                    text-decoration:none;
+                    color: #49c1a2;
+                }
+                a:hover{
+                    text-decoration:underline;
+                }
+                .container{
+                    margin:0px auto;
+                    margin-top:10%;
+                    max-width:350px;
+                    padding:15px;
+                }
+                .form{
+                    text-align: center;
+                }
+                .formwrap{
+                    background-color:white;
+                    padding:12px;
+                    border-radius:12px;
+                    width: 300px;
+                    height:460px;
+                    transition:0.6s;
+                }
+                .formwrap:hover{
+                    box-shadow: #333 7px 7px;
+                    width:300px;
+                    height:460px;
+                    transition:0.6s;
+                }
+                .formwrap .formgroup{
+                    margin:15px;
+                }
+                .formwrap h1,.formwrap p{
+                    text-align: center;
+                    margin:12px auto;    
+                }
+                .formwrap p{
+                    font-size:11px;
+                    font-weight: bold;
+                }
+                .formwrap .formgroup label{
+                    display:block;
+                    font-size:13px;
+                }
+                .formwrap .formgroup input{
+                    width:100%;
+                    padding:10px;
+                    height:20px;
+                    border:1px solid #ddd;
+                    border-radius:5px;
+                }
+                .formwrap .btn{
+                    color:white;
+                    display:block;
+                    border:none;
+                    background-color: #49c1a2;
+                    width:100%;
+                    border-radius:5px;
+                    margin-top:20px;
+                    padding:10px;
+                }
+                .formwrap .btn:hover{
+                    background-color:#37a08e;
+                }
+                footer p{
+                    color:white;
+                    font-size:12px;
+                    text-align:center;
+                    margin-top:15px;    
+                }
+            </style>
+        </div>
     </div>
-    <style>
-      html,
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        background-color: white;
-        font-family: "Poppins", sans-serif;
-      }
-      .login {
-        margin-bottom: 50px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-          0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        margin-top: 50px;
-        padding: 20px;
-        width: 890px;
-        height: 520px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .footer {
-        font-family: "Poppins", sans-serif;
-        display: grid;
-        font-size: 14px;
-        display: flex;
-        flex-flow: row wrap; /* flex-direction and flex-wrap*/
-        padding: 20px 40px 10px 40px;
-        color: #fff;
-        background-color: #1b262c;
-      }
-      /* Select all elements where the parent is footer*/
-      .footer > * {
-        /* grow shrink basis (takes 100% of width) */
-        flex: 1 0 100%;
-        color: #999;
-      }
-      .footer-left {
-        margin-right: 15px;
-        margin-bottom: 20px;
-      }
-      .footer-left .socials {
-        text-align: left;
-      }
-      .footer-left .socials .logo {
-        background-color: #ffffff;
-        border-radius: 35px;
-        margin: 5px;
-        width: 25px;
-        height: 28px;
-        padding: 3px;
-      }
-      .footer-left .text {
-        margin: 10px auto;
-        text-align: left;
-      }
-      h4 {
-        font-weight: 700;
-        font-size: 19px;
-        text-align: left;
-      }
-      .footer ul {
-        list-style: none;
-        padding-left: 0;
-        text-align: left;
-      }
-      .footer li {
-        line-height: 20px;
-      }
-      .footer li:hover {
-        text-decoration: none;
-      }
-      .footer a {
-        text-decoration: none;
-      }
-      .footer-right {
-        display: flex;
-        flex-flow: row wrap;
-      }
-      .footer-right > * {
-        flex: 1 50%;
-        margin-right: 15px;
-      }
-      .box a {
-        color: #999;
-      }
-      .footer-bottom {
-        text-align: center;
-        color: #999;
-        padding-top: 20px;
-      }
-      .footer-left p {
-        padding-right: 20%;
-        color: #999;
-      }
-      .socails a {
-        background: #fff;
-        width: 40px;
-        height: 40px;
-        display: inline-block;
-        margin-right: 10px;
-      }
-      .socails a {
-        color: #fff;
-        padding: 10px 12px;
-        font-size: 20px;
-      }
-      @media screen and (min-width: 1025px) {
-        .footer-right > * {
-          flex: 1;
-        }
-        .footer-left {
-          flex: 1 0px;
-        }
-        .footer-right {
-          flex: 2 0px;
-        }
-      }
-    </style>
-  </body>
+
+</body>
 </html>
