@@ -29,8 +29,8 @@ class MailServer:
 
     def create_mail(self, name, to):
         heading = " Watcher (alert) "
-        message = "{}, put your mask immediately".format(name.capitalize())
-        adminMessage = "{} is not wearing a mask, please check".format(name.capitalize())
+        message = "{}, put your mask immediately !".format(name.capitalize())
+        adminMessage = "{} is not wearing a mask, please check and notify!".format(name.capitalize())
 
         self.send_email(heading, message, to)
         self.send_email(heading, adminMessage, admin)
