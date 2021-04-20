@@ -7,7 +7,7 @@ from scanner import Scanner
 app = Flask(__name__)
 app.secret_key=os.urandom(24)
 
-@app.route('/')
+
 @app.route('/home')
 def home():
     return render_template('home.html')
@@ -96,7 +96,7 @@ def gen(scanner):
 def video_feed():
     return Response(gen(Scanner()), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-
+@app.route('/')
 @app.route('/login')
 def login():
     return render_template('login.html')
@@ -160,7 +160,7 @@ def loginValidation():
                 print (row) 
                 if (username == row["username"]) and (password == row["password"]):                      
                         session['ID'] = rows[0][0]
-                        return redirect('/response')  
+                        return redirect('/home')  
                 else :
                         return redirect('/login')  
   
