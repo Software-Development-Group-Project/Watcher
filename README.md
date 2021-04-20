@@ -1,6 +1,6 @@
 ## Watcher 😷
 
-- Face-mask detection &amp; Person identification Web App
+- Face-mask detection, Person identification &amp; Notification sending Web App
 
 ## Watcher Frontend
 
