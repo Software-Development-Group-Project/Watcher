@@ -10,8 +10,10 @@ app.secret_key=os.urandom(24)
 
 @app.route('/home')
 def home():
-    return render_template('home.html')
-
+    if 'ID' in session:
+        return render_template('home.html')
+    else:    
+        return render_template('login.html')
 
 @app.route('/help')
 def help():
@@ -110,6 +112,7 @@ def about():
 @app.route('/adduser',methods = ["POST","GET"])
 def adduser():  
   
+    alert = "alert"
     if request.method == "POST":  
         try:  
             username = request.form["username"]  
@@ -118,12 +121,15 @@ def adduser():
             with sqlite3.connect("admin.db") as con:  
                 cur = con.cursor()  
                 cur.execute("INSERT into Admin (username, email, password) values (?,?,?)",(username, email, password))  
-                con.commit()               
+                con.commit()
+                alert = "Admin successfully registered Now Login"               
         except:  
-            con.rollback()  
-        finally:  
-            return redirect('/login')
-            con.close()
+            con.rollback() 
+            alert = "sorry We can not add the Admin try again"  
+        finally:
+            con.close()  
+            return render_template("login.html", alert=alert)
+
 
 @app.route('/response')
 def response():  
@@ -146,7 +152,7 @@ def viewUser():
 @app.route('/loginValidation',methods = ["POST","GET"])
 def loginValidation():  
     if request.method == "POST":  
-          
+            alert = "alert"
             username = request.form["username"]  
             password = request.form["password"]   
             con = sqlite3.connect("admin.db")  
@@ -157,12 +163,14 @@ def loginValidation():
             rows = cur.fetchall()
              
             for row in rows :
-                print (row) 
+                 
                 if (username == row["username"]) and (password == row["password"]):                      
                         session['ID'] = rows[0][0]
                         return redirect('/home')  
                 else :
-                        return redirect('/login')  
+                        alert = "sorry , you have entered invalid credentials try again"  
+                        return render_template("login.html", alert=alert)
+                          
   
             
 @app.route('/logout')
