@@ -16,5 +16,113 @@
 
           <p> Not Registered ? <a href="/signUp">Sign Up</a></p>
       </div>
+          <style>
+        html,*{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+        }
+        body{
+            background-color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        .footer{
+            font-family: 'Poppins', sans-serif;
+            display: grid;
+            font-size: 14px;
+            display: flex;
+            flex-flow: row wrap; /* flex-direction and flex-wrap*/
+            padding: 20px 40px 10px 40px;
+            color: #fff;
+            background-color: #1b262c;
+        }
+        /* Select all elements where the parent is footer*/
+        .footer > *{
+            /* grow shrink basis (takes 100% of width) */
+            flex: 1 0 100%;
+            color: #999;
+        }
+        .footer-left{
+            margin-right: 15px;
+            margin-bottom: 20px;
+        }
+        .footer-left .socials{
+            text-align: left;
+        }
+        .footer-left .socials .logo{
+            background-color: #ffffff;
+            border-radius: 35px;
+            margin:5px;
+            width: 25px;
+            height: 28px;
+            padding: 3px;
+        }
+        .footer-left .text{
+            margin: 10px auto;
+            text-align: left;
+        }
+        h4{
+            font-weight: 700;
+            font-size: 19px;
+            text-align: left;
+        }
+        .footer ul{
+            list-style: none;
+            padding-left: 0;
+            text-align: left;
+        }
+        .footer li{
+            line-height: 20px;
+        }
+        .footer li:hover{
+            text-decoration: none;
+        }
+        .footer a{
+            text-decoration: none;
+        }
+        .footer-right{
+            display: flex;
+            flex-flow: row wrap;
+        }
+        .footer-right > *{
+            flex: 1 50%;
+            margin-right: 15px;
+        }
+        .box a{
+            color: #999;
+        }
+        .footer-bottom{
+            text-align: center;
+            color: #999;
+            padding-top: 20px;
+        }
+        .footer-left p{
+            padding-right: 20%;
+            color: #999;
+        }
+        .socails a{
+            background: #fff;
+            width:40px;
+            height: 40px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .socails a {
+            color: #fff;
+            padding: 10px 12px;
+            font-size: 20px;
+        }
+        @media screen and (min-width:1025px){
+            .footer-right > *{
+                flex: 1;
+            }
+            .footer-left{
+                flex: 1 0px;
+            }
+            .footer-right{
+                flex: 2 0px;
+            }
+        }
+    </style>
 </body>
 </html>
