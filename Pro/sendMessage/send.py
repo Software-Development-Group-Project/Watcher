@@ -22,8 +22,8 @@ def send_email(subject, message, to):
 def create_mail(name, to):
     admin = "thuwarakan123@gmail.com"
     heading = " Watcher (alert) "
-    message ="{}, put your mask immediately" .format(name)
-    adminMessage = "{} is not wear a mask, please check" .format(name)
+    message ="{}, please put on your mask immediately!" .format(name)
+    adminMessage = "{} is not wearing a mask, please check and notify!" .format(name)
     send_email(heading, message, to)
     send_email(heading, adminMessage, admin)
 
