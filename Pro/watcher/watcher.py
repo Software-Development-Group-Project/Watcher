@@ -10,11 +10,10 @@ app.secret_key=os.urandom(24)
 
 @app.route('/home')
 def home():
-    # if 'ID' in session:
-    #     return render_template('home.html')
-    # else:    
-    #     return render_template('login.html')
-    return render_template('home.html')
+    if 'ID' in session:
+        return render_template('home.html')
+    else:    
+        return render_template('login.html')
 
 @app.route('/help')
 def help():
