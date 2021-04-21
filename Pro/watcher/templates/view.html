@@ -1,6 +1,6 @@
 {% extends "layout.html" %} {% block content %}
 <center>
-  <h3>Members Information</h3>
+  <h1>Members Information</h1>
 </center>
 <div class="main-block">
   <table>
@@ -27,7 +27,7 @@
 </div>
 <center>
   <div class="block">
-    <button><a href="{{ url_for('add') }}">Add a new member </a></button>
+    <button><a href="{{ url_for('add') }}">Add member </a></button>
     <button id="right">
       <a href="{{ url_for('delete') }}">Delete member</a>
     </button>
