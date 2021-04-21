@@ -122,10 +122,10 @@ def adduser():
                 cur = con.cursor()  
                 cur.execute("INSERT into Admin (username, email, password) values (?,?,?)",(username, email, password))  
                 con.commit()
-                alert = "Admin successfully registered Now Login"               
+                alert = "Admin Successfully Registered Now Login"               
         except:  
             con.rollback() 
-            alert = "sorry We can not add the Admin try again"  
+            alert = "Sorry We can not add the Admin try again"  
         finally:
             con.close()  
             return render_template("login.html", alert=alert)
@@ -161,18 +161,18 @@ def loginValidation():
             cur.execute("select * from Admin WHERE username = ?",[username,])  
             cur.execute("select * from Admin WHERE password = ?",[password,])  
             rows = cur.fetchall()
+          
              
-            for row in rows :
-                 
+            for row in rows :                 
                 if (username == row["username"]) and (password == row["password"]):    
                     if (len(username) >0 and len(password)>0):               
                         session['ID'] = rows[0][0]
                         return redirect('/home')
                     else :
-                        alert = "sorry , you have to enter user credentials"  
+                        alert = "Sorry, you have to enter user credentials"  
                         return render_template("login.html", alert=alert)
                 else :
-                        alert = "sorry , you have entered invalid credentials try again"  
+                        alert = "Sorry, you have entered invalid user credentials try again"  
                         return render_template("login.html", alert=alert)
                           
   
