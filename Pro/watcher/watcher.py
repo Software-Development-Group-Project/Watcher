@@ -152,31 +152,32 @@ def viewUser():
 @app.route('/loginValidation',methods = ["POST","GET"])
 def loginValidation():  
     if request.method == "POST":  
-        alert = "Invalid Password"
-        username = request.form["username"]  
-        password = request.form["password"]   
-        con = sqlite3.connect("admin.db")  
-        con.row_factory = sqlite3.Row  
-        cur = con.cursor()  
-        cur.execute("select * from Admin WHERE username = ?",[username,])  
-        cur.execute("select * from Admin WHERE password = ?",[password,])  
-        rows = cur.fetchall()
-        
+            alert = "alert"
+            username = request.form["username"]  
+            password = request.form["password"]   
+            con = sqlite3.connect("admin.db")  
+            con.row_factory = sqlite3.Row  
+            cur = con.cursor()  
+            cur.execute("select * from Admin WHERE username = ?",[username,])  
+            cur.execute("select * from Admin WHERE password = ?",[password,])  
+            rows = cur.fetchall()
+
+            try:   
+                for row in rows :                 
+                    if (username == row["username"]) and (password == row["password"]):    
+                        if (len(username) >0 and len(password)>0):               
+                            session['ID'] = rows[0][0]
+                            return redirect('/home')
+                        else :
+                            alert = "Sorry, you have to enter user credentials"  
+                            return render_template("login.html", alert=alert)
+                    else :
+                            alert = "Sorry, you have entered invalid user credentials try again"  
+                            return render_template("login.html", alert=alert)
+            except:
+                alert = "Sorry, you have to enter correct user credentials"          
+                print(alert)
             
-        for row in rows :                 
-            if (username == row["username"]) and (password == row["password"]):    
-                if (len(username)>0 and len(password)>0):               
-                    session['ID'] = rows[0][0]                    
-                    return render_template('home.html')
-                else :
-                    alert = "Sorry, you have to enter user credentials"  
-                    return render_template('login.html', alert=alert)
-            else :
-                alert = "Sorry, you have entered invalid user credentials try again"
-                return render_template('login.html', alert=alert)
-        return render_template('login.html', alert=alert)
-                          
-             
 @app.route('/logout')
 def logout():  
     session.pop('ID')
