@@ -24,7 +24,8 @@ tf.get_logger().setLevel(logging.ERROR)
 
 # importing cascades xml, face mask model and face recog model
 face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
-face_mask_detect_model = load_model('cascades/model-017.model')
+# face_mask_detect_model = load_model('cascades/model-017.model')
+face_mask_detect_model = load_model('cascades/face_mask.h5')
 face_recog_model = load_model('cascades/face_recognition.h5')
 
 # connecting to the database and retreiving members
