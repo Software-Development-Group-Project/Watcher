@@ -26,19 +26,14 @@ model.add(Dense(128, activation='relu'))
 model.add(Dense(3, activation='softmax'))
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
-train_data_gen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
+train_data_gen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True, rotation_range=40, width_shift_range=0.2, height_shift_range=0.2, fill_mode='nearest')
+test_data_gen = ImageDataGenerator(rescale=1./255)
 
-train_data_gen = ImageDataGenerator(rescale=1./255)
+training_set = train_data_gen.flow_from_directory(os.path.join(cwd, "dataset/training/"), target_size=(64, 64), batch_size=32, class_mode='categorical')
 
-training_set = train_data_gen.flow_from_directory(os.path.join(cwd, "dataset\\training\\"), target_size=(64, 64), batch_size=32, class_mode='categorical')
+testing_set = test_data_gen.flow_from_directory(os.path.join(cwd, "dataset/testing/"), target_size=(64, 64), batch_size=32, class_mode='categorical')
 
-testing_set = train_data_gen.flow_from_directory(os.path.join(cwd, "dataset\\testing\\"), target_size=(64, 64), batch_size=32, class_mode='categorical')
+checkpoint = ModelCheckpoint(os.path.join(cwd, 'model/face-recognition-model-{epoch:05d}.h5'), monitor='val_loss', verbose=1, mode='auto')
+history = model.fit(training_set, epochs=15, callbacks=[checkpoint], validation_data=testing_set)
 
 model.save(os.path.join(cwd, 'model\\face_recognition.h5'))  # or h5
-
-model.fit_generator(training_set, steps_per_epoch=1200, epochs=15, validation_data=testing_set, validation_steps=300)
-
-training_set.class_indices
-
-{'nirahulan':0} # Add
-
