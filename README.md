@@ -24,7 +24,7 @@
 `gunicorn==19.9.0`
 `pytest==5.4.1`
 
-## Creating Local Environment
+## Creating Virtual Environment
 
 - Use `python3 -m venv venv` to create new vitual environment.
 - Then use `venv\Scripts\activate` to activate the virtual environment. 
