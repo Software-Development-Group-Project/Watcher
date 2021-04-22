@@ -2,7 +2,7 @@ from keras.models import load_model
 import cv2
 import numpy as np
 
-model = load_model('model-017.model')
+model = load_model('model-011.model')
 
 face_clsfr=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
