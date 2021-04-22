@@ -31,8 +31,6 @@
 
 ## Installing Required Packages
 
-#### Development
-
 - **opencv** - `pip install opencv-python`
 - **tensorflow** - `pip install tensorflow`
 - **numpy** - `pip install numpy`
@@ -42,12 +40,6 @@
 - **twilio** - `pip install twilio`
 - **gunicorn** - `pip install gunicorn`
 - **pytest** - `pip install pytest`
-
-#### Run
-
-- **opencv** - `pip install opencv-python`
-- **tensorflow** - `pip install tensorflow`
-- **Flask** - `pip install flask`
 
 ### Running Watcher Application
 
