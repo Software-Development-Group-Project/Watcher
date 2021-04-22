@@ -461,3 +461,4 @@ $RECYCLE.BIN/
 
 # dataset folders 
 dataset/
+.vscode

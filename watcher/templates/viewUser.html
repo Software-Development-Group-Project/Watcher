@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>veiw</title>
+</head>
+<body>
+    <table>
+        <thead>
+          <td>ID</td>
+          <td>username</td>
+          <td>email</td>
+          <td>password</td>
+        </thead>
+      
+        {% for row in rows %}
+
+        <tr>
+         <td>{{row["id"]}}</td>
+          <td>{{row["username"]}}</td>
+          <td>{{row["email"]}}</td>
+          <td>{{row["password"]}}</td>
+        </tr>
+      
+        {% endfor %}
+</body>
+</html>

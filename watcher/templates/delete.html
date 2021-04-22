@@ -1,0 +1,94 @@
+{% extends "layout.html" %} {% block content %}
+<center>
+<h2>Remove member from the list</h2>
+</center>
+<div class="main-block">
+
+
+<form action="/deleterecord" method="post">
+  <input type="text" name="id" placeholder="Type here Member ID..."/>
+  <input type="submit" value="Submit" />
+</form>
+</div>
+<button id="right"><a href="{{ url_for('view') }}">Back</a></button>
+<style>
+  html, body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 14px;
+  color: #666;
+  }
+  h2 {
+  margin: 0 0 20px;
+  font-weight: 400;
+  color: #1b262c;
+  }
+  p {
+  margin: 0 0 5px;
+  }
+  button{
+    padding: 15px 30px;
+    color: #ffffff;
+    background-color: rgb(2, 8, 6);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    border-radius: 15px;
+    margin-left: 45%;
+     
+  }
+  a{
+    text-decoration: none;
+    color: #ffffff ;
+  }
+  .main-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self:center;
+  min-height: 50vh;
+  background: #ffffff;
+  }
+  form {
+  padding: 25px;
+  margin: 25px;
+  align-items: center;
+  box-shadow: 0 2px 5px #f5f5f5; 
+  background: #f5f5f5; 
+  border-radius:40px;
+  }
+  input, textarea {
+  width: calc(100% - 18px);
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #1b262c;
+  outline: none;
+  }
+  input::placeholder {
+  color: rgb(230, 230, 230);
+  }
+  input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #1b262c; 
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  border-radius:40px;
+  }
+  input:hover {
+  background: #1e2022;
+  }    
+  @media (min-width: 568px) {
+  .main-block {
+  flex-direction: row;
+  }
+  .left-part, form {
+  width: 50%;
+  }
+  }
+</style>
+{% endblock content %}

@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="welcome-page">
+    <div id="welcome-container">
+        <div id="welcome-info-container">
+            <h1>Welcome to <span class="special-text">Watcher</span></h1>
+            <p>In this hard times closing and lockdowns are not easy at all instead if people follow the rules and stop spreading virus would be the better way to live the normal  day to day life. But some people don't follow any rules and regulations for them it's easy to have some one to manage them. <span class="special-text">Watcher</span> will do that work for you!</p>
+        </div>
+        <div id="welcome-img-container">
+            <img src="{{ url_for('static', filename='images/social_distance.svg') }}" alt="Wearing mask and maintaining social distance"/>
+        </div>
+    </div>
+</div>
+<div id="about-page">
+    <h4 id="head1">How watcher works?</h4>
+    <div id="about-container">
+        <div class="about-info-container">  
+            <img src="{{ url_for('static', filename='images/cctv.svg') }}" alt="Wearing mask and maintaining social distance"/>
+            <article>
+                <h5>Scanning People</h5>
+                <p>Scan people to identify whether all wearing mask or not by scanning their face whether they wear mask or not</p>
+            </article>
+        </div>
+        <div class="about-info-container">
+            <img src="{{ url_for('static', filename='images/tv.svg') }}" alt="Wearing mask and maintaining social distance"/>
+            <article>
+                <h5>Display Video</h5>
+                <p>Displaying live video stream that is scanned by cctv camera. And show people and their detaila if they didn't wear mask</p>
+            </article>
+        </div>
+        <div class="about-info-container">
+            <img src="{{ url_for('static', filename='images/mobile-vibration.svg') }}" alt="Wearing mask and maintaining social distance"/>
+            <article>
+                <h5>Alert User</h5>
+                <p>If a person detected without mask then watcher will alert them by sending them a message or email and admin</p>
+            </article>
+        </div>
+    </div>
+    <div id="video">
+        <iframe width="853" height="480" src="https://www.youtube.com/embed/5axl1dA--f8?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+    .special-text{
+        background-color: #bbe1fa;
+        border-radius: 30px;
+        padding: 4px;
+    }
+    #welcome-container{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 20px 20px;
+    }
+    #welcome-container #welcome-info-container{
+        flex: 3;
+        text-align: left;
+    }
+    #welcome-container #welcome-info-container h1{
+        font-size: 30px;
+        margin: 10px;
+    }
+    #welcome-container #welcome-info-container h1 .special-text{
+        padding: 8px;
+    }
+    #welcome-container #welcome-info-container p{
+        font-size: 13px;
+        text-align: justify;
+        margin: 0px 15px 0px 10px;
+    }
+    #welcome-container #welcome-info-container li{
+        color: white;
+    }
+    #welcome-container #welcome-img-container{
+        flex: 1;
+    }
+    #welcome-container #welcome-img-container img{
+        width: 250px;
+        height: 230px;
+        object-fit: cover;
+    }
+
+    @media only screen and (max-width: 1250px) {
+        #welcome-container{
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          justify-content: space-around;
+          align-items: center;
+          padding: 20px
+        }
+        #welcome-container #welcome-info-container{
+            flex: 1;
+        }
+        #welcome-container #welcome-info-container h1{
+            font-size: 25px;
+            text-align: center;
+        }
+        #welcome-container #welcome-info-container p{
+            margin: 5px;
+        }
+        #welcome-container #welcome-info-container .special-text{
+            background-color: white;
+        }
+        #welcome-container #welcome-img-container{
+            padding:25px;
+            flex: 2;
+        }
+        #welcome-container #welcome-info-container .group-links .link{
+            text-decoration:underline;
+        }
+    }
+        #about-page {
+            padding: 25px 20px 20px 20px;
+        }
+
+    #about-page h4{
+        text-align: center;
+    }
+    #about-container{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start
+    }
+    #about-container div{
+        flex:1;
+        text-align: center;
+        margin:10px;
+    }
+    #about-container div p{
+        font-size: 13px;
+    }
+
+    @media only screen and (max-width: 1025px) {
+        #about-container{
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          justify-content: space-around;
+          align-items: center;
+          /* padding: 20px; */
+        }
+    }
+
+    #head1{
+        margin-bottom: 12px;
+    }
+
+    #video{
+        margin-bottom: 50px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-top: 50px;
+        padding: 20px;
+        width: 890px;
+        height: 520px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+
+</style>
+{% endblock content %}
