@@ -1,25 +1,16 @@
-## Watcher 😷
+# Watcher 😷
 
-- Face-mask detection, Person identification &amp; Alerting Web Application
+**Face-mask detection, Person identification &amp; Alerting Web Application.**
 
-#### Watcher Frontend
+**Watcher front end created in html/css with jinja. Watcher backend created in flask.**
 
-- Watcher front end created in html with flask jinja
-
-#### Watcher Backend
-
-- Watcher backend will be created in flask
-
-#### Watcher Model
-
-- Watcher uses cascade classifier to detect a person face
-- Watcher model created using CNN which will be used for face mask detection and face recognition
+**Watcher uses cascade classifier to detect a person's face and uses CNN for face recognition and face mask detection.**
 
 ## Folder Structure
 
-- **data_science_component** - This folder have watcher application's core compoents which are face detection, mask detection and face recognition
+- **data_science_component** - This folder have watcher application's core compoents which are face detection, mask detection and face recognition (models and notebooks).
 - **watcher** - This folder have the `Watcher` application
-- **features** - Features folder have the features that are planned to add in future
+- **features** - Features folder have the features that are planned to add in future.
 
 ## Required Packages
 
@@ -35,8 +26,8 @@
 
 ## Creating Local Environment
 
-- Use `python3 -m venv venv` to create new vitual environment
-- Then use `venv\Scripts\activate` to activate the virtual environment 
+- Use `python3 -m venv venv` to create new vitual environment.
+- Then use `venv\Scripts\activate` to activate the virtual environment. 
 
 ## Installing Required Packages
 
@@ -60,6 +51,11 @@
 
 ### Running Watcher Application
 
-- Open command prompt
+- Clone the Watcher github repository.
+- Then open new command prompt.
+- Create new virtual environment for the cloned repositary.
+- Activate the environment.
+- Install the required packages.
+- After installing the required packages.
 - Change the directory to `Watcher\watcher` folder
 - Then use `python watcher.py` command to run the watcher application
