@@ -45,9 +45,8 @@
 
 - Clone the Watcher github repository.
 - Then open new command prompt.
+- Change the directory to `Watcher\watcher` folder
 - Create new virtual environment for the cloned repositary.
 - Activate the environment.
 - Install the required packages.
-- After installing the required packages.
-- Change the directory to `Watcher\watcher` folder
 - Then use `python watcher.py` command to run the watcher application
