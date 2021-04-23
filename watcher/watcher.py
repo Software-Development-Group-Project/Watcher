@@ -29,12 +29,12 @@ def live():
 def index():
     return render_template("index.html");
 
-
+# creates path /add to render template add.html
 @app.route("/add")
 def add():
     return render_template("add.html")
 
-
+# creates path /savedetails to render template success.html
 @app.route("/savedetails", methods=["POST", "GET"])
 def saveDetails():
     msg = "msg"
@@ -57,7 +57,7 @@ def saveDetails():
             con.close()
             return render_template("success.html", msg=msg)
 
-
+# creates path /view to render template view.html
 @app.route("/view")
 def view():
     con = sqlite3.connect("members.db")
@@ -67,12 +67,12 @@ def view():
     rows = cur.fetchall()
     return render_template("view.html", rows=rows)
 
-
+# creates path /delete to render template delete.html
 @app.route("/delete")
 def delete():
     return render_template("delete.html")
 
-
+# creates path /deleteecord to render template delete_record.html
 @app.route("/deleterecord", methods=["POST"])
 def deleterecord():
     id = request.form["id"]
@@ -139,7 +139,7 @@ def response():
     else:    
         return redirect('/login') 
 
-
+# creates path /viewUser to render template viewUser.html
 @app.route("/viewUser")  
 def viewUser():  
     con = sqlite3.connect("admin.db")  
@@ -149,7 +149,7 @@ def viewUser():
     rows = cur.fetchall()
     return render_template("viewUser.html",rows=rows)
             
-
+# direct to /loginValidation to render template login.html or home.html 
 @app.route('/loginValidation',methods = ["POST","GET"])
 def loginValidation():  
     if request.method == "POST":  
