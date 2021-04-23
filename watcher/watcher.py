@@ -99,16 +99,17 @@ def video_feed():
     return Response(gen(Scanner()), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/')
+# direct to path /login to render template login.html
 @app.route('/login')
 def login():
     return render_template('login.html')
 
-
+# direct to path /signUp to render template signUp.html
 @app.route('/signUp')
 def about():
     return render_template('signUp.html')
 
-   
+# direct to path /adduser to render template login.html    
 @app.route('/adduser',methods = ["POST","GET"])
 def adduser():  
   
@@ -176,7 +177,7 @@ def loginValidation():
                 return render_template('login.html', alert=alert)
         return render_template('login.html', alert=alert)
                           
-             
+# redirect to /login if the admin logout   
 @app.route('/logout')
 def logout():  
     session.pop('ID')
