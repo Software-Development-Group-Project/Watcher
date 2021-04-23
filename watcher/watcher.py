@@ -19,7 +19,7 @@ def home():
 def help():
     return render_template('help.html')
 
-
+# url endpoint for live streaming video page
 @app.route('/live')
 def live():
     return render_template('live.html')
@@ -86,14 +86,14 @@ def deleterecord():
         finally:
             return render_template("delete_record.html", msg=msg)
 
-
+# calling the scanner class continously to get the video frame and return the frame with content type 
 def gen(scanner):
     while True:
         frame = scanner.get_frame()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-
+# url endpoint for streaming video
 @app.route('/video_feed')
 def video_feed():
     return Response(gen(Scanner()), mimetype='multipart/x-mixed-replace; boundary=frame')
