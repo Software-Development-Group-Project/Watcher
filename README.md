@@ -15,7 +15,7 @@
 ## Required Packages
 
 `opencv_python==4.5.1.48`
-`tensorflow==2.4.1`
+`tensorflow==2.5.0`
 `numpy==1.19.5`
 `Keras==2.4.3`
 `Flask==1.1.2`
