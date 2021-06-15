@@ -5,3 +5,12 @@
         - pip3 install face_recognition
     - Extension
         - Visual Studio for C++ with Python development extension
+
+
+
+
+pip install -r requirements.txt
+Make sure you're in the same folder as the requirements.txt file when running this command.
+
+If you get some path name instead of the version number in the requirements.txt file, use this pip command to work around it.
+pip list --format=freeze > requirements.txt
