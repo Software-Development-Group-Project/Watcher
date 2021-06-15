@@ -88,7 +88,7 @@ class Scanner:
         face = face_cascade.detectMultiScale(gray, 1.3, 5)  # searching for faces using the cascade classifier
 
         for (x, y, w, h) in face:
-            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)  # showing red rectangle over the detected face
+            # cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)  # showing red rectangle over the detected face
             resized = cv2.resize(gray, (100, 100))  # resizing the detected face (part of the frame) to 100x100
             normalized = resized / 255.0  # Optimization. so values for input layer will be 0-1
             reshaped = np.reshape(normalized, (1, 100, 100, 1))  # reshaping the numpy array (part of the frame)
@@ -96,7 +96,6 @@ class Scanner:
             state = np.argmax(result, axis=1)[0]  # geting the index of the class which have the highest probablity
 
             if state == 1:  # if the user without mask detected
-                cv2.putText(frame, status[state], (x, (y - 10)), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)  # showing test "NO MASK" over the detected face
                 small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25) # Resize frame of video to 1/4 size for faster face recognition processing
                 rgb_small_frame = small_frame[:, :, ::-1] # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
 
@@ -140,6 +139,11 @@ class Scanner:
 
                     # Draw a box around the face
                     cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
+
+                    # Draw a label above face
+                    cv2.rectangle(frame, (left, top), (right, top-40), (0, 0, 255), cv2.FILLED)
+                    font = cv2.FONT_HERSHEY_DUPLEX
+                    cv2.putText(frame, status[state], (left, top-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)  # showing test "NO MASK" over the detected face
 
                     # Draw a label with a name below the face
                     cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
