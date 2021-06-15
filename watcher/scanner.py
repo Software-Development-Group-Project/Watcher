@@ -8,7 +8,6 @@ import numpy as np
 import face_recognition
 from datetime import datetime
 from mail_server import MailServer
-import tensorflow as tf
 from tensorflow.keras.models import load_model
 
 # importing cascades xml, face mask model and face recog model
