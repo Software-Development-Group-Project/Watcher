@@ -1,0 +1,7 @@
+-- Requiered packages for face recognition library --
+    - Python packages
+        - pip3 install opencv_python
+        - pip3 install cmake
+        - pip3 install face_recognition
+    - Extension
+        - Visual Studio for C++ with Python development extension

@@ -5,74 +5,90 @@ import sqlite3
 import logging
 import threading
 import numpy as np
-from PIL import Image
+import face_recognition
 from datetime import datetime
 from mail_server import MailServer
-
-# to stop warnings tensorflow cuda driver
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-logging.getLogger("tensorflow").setLevel(logging.ERROR)
-logging.getLogger('tensorflow').setLevel(logging.FATAL)
-
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
-# to stop warnings tensorflow cuda driver
-tf.autograph.set_verbosity(3)
-tf.get_logger().setLevel(logging.ERROR)
-
 # importing cascades xml, face mask model and face recog model
-face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
-# face_mask_detect_model = load_model('cascades/model-017.model')
-face_mask_detect_model = load_model('cascades/face_mask.h5')
-face_recog_model = load_model('cascades/face_recognition.h5')
-
-# connecting to the database and retreiving members
-connection = sqlite3.connect('members.db')
-cursor = connection.cursor()  # creating cursor instance for db to execute sql statement
-query = "SELECT name, email FROM Members ORDER BY name ASC"  # face recognition model classes are ordered by members name
-cursor.execute(query)
-results = cursor.fetchall()
-
-# using the database to retrieve their names and mail
-mails = [result[1] for result in results]  # storing mails in array
-users = [result[0] for result in results]  # storing user names in array
-
-# used to send email
-# count dictionary used to identify whether to send email imdietly or not
-# if the user detected without mask for the first time then mail will be send to the user and admin
-# after the first alert mail, mail will be send to the user and admin in 10 min break
-# this is helpfull for frames
-count = [0 for result in results]
-mailed_time = [datetime.now() for result in results]
-detected_time = [datetime.now() for result in results]
-
-# closing the connection with database
-connection.close()
+face_cascade = cv2.CascadeClassifier('./assets/models/haarcascade_frontalface_default.xml')
+# importing face mask detection custom CNN model
+face_mask_detect_model = load_model('./assets/models/face_mask.h5')
 
 # dict that used show label based on model prediction
 status = {0: 'MASK', 1: 'NO MASK'}
 
+#  --------------------------------------- Uncomment after updating the member database -----------------------------------------------
+
+# cursor = self.member_connection.cursor()
+# query = "SELECT name, email, imageLocation FROM Members ORDER BY name ASC"
+# cursor.execute(query)
+# results =  cursor.fetchall()
+
+# mails = [result[1] for result in results]
+# count = [0 for result in results]
+# mailed_time = [datetime.now() for result in results]
+# detected_time = [datetime.now() for result in results]
+# known_face_encodings = [
+#     face_recognition.face_encodings(face_recognition.load_image_file(result[5])) for result in results
+# ]
+# known_face_names = [result[0] for result in results]
+
+#  --------------------------------------- Uncomment after updating the member database -----------------------------------------------
+
+#  ------------------------------------------- Delete after updating the member database ---------------------------------------------
+
+# Given an image, return the 128-dimension face encoding for each face in the image.
+nirahulan_image = face_recognition.load_image_file("./assets/faces/nirahulan.jpg")
+nirahulan_face_encoding = face_recognition.face_encodings(nirahulan_image)[0]
+
+jenoshanan_image = face_recognition.load_image_file("./assets/faces/jenoshanan.jpg")
+jenoshanan_face_encoding = face_recognition.face_encodings(jenoshanan_image)[0]
+
+vithushigan_image = face_recognition.load_image_file("./assets/faces/vithushigan.jpg")
+vithushigan_face_encoding = face_recognition.face_encodings(vithushigan_image)[0]
+
+ashwinth_image = face_recognition.load_image_file("./assets/faces/ashwinth.jpg")
+ashwinth_face_encoding = face_recognition.face_encodings(ashwinth_image)[0]
+
+known_face_encodings = [
+    nirahulan_face_encoding,
+    jenoshanan_face_encoding,
+    vithushigan_face_encoding,
+    ashwinth_face_encoding
+]
+
+known_face_names = [
+    "Nirahulan",
+    "Jenoshanan",
+    "Vithushigan",
+    "Ashwinth",
+]
+
+#  ------------------------------------------- Delete after updating the member database ---------------------------------------------
 
 class Scanner:
 
     def __init__(self):
-        self.video = cv2.VideoCapture(0)  # connecting to the webcam using opencv
-        self.video.set(cv2.CAP_PROP_FPS, 100)  # setting the frames
         self.mail_server = MailServer()  # creating instance of mail server
+        self.video = cv2.VideoCapture(0)  # connecting to the webcam using opencv
+        self.face_locations = []
+        self.face_encodings = []
+        self.face_names = []
+        self.process_this_frame = True
 
     def __del__(self):
         self.video.release()  # video connection will be released when the instance of Scanner class garbage collected
 
     # returning frames
     def get_frame(self):
-        ret, img = self.video.read()  # reading the frames from source and returning boolean (to denote success) and captured frame
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # converting the frame to gray because face mask detection model doesn't require RGB frame
+        ret, frame = self.video.read()  # reading the frames from source and returning boolean (to denote success) and captured frame        
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # converting the frame to gray because face mask detection model doesn't require RGB frame
         face = face_cascade.detectMultiScale(gray, 1.3, 5)  # searching for faces using the cascade classifier
 
         for (x, y, w, h) in face:
-            cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 2)  # showing red rectangle over the detected face
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)  # showing red rectangle over the detected face
             resized = cv2.resize(gray, (100, 100))  # resizing the detected face (part of the frame) to 100x100
             normalized = resized / 255.0  # Optimization. so values for input layer will be 0-1
             reshaped = np.reshape(normalized, (1, 100, 100, 1))  # reshaping the numpy array (part of the frame)
@@ -80,26 +96,60 @@ class Scanner:
             state = np.argmax(result, axis=1)[0]  # geting the index of the class which have the highest probablity
 
             if state == 1:  # if the user without mask detected
-                cv2.putText(img, status[state], (x, (y - 10)), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)  # showing test "NO MASK" over the detected face
-                face_img = img[y:y + h, x:x + w]  # croping the images/frame to detected face and storing in the variable
+                cv2.putText(frame, status[state], (x, (y - 10)), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)  # showing test "NO MASK" over the detected face
+                small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25) # Resize frame of video to 1/4 size for faster face recognition processing
+                rgb_small_frame = small_frame[:, :, ::-1] # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
 
-                if type(face_img) is np.ndarray:  # if the face_img is an numpy array
-                    resized_face_img = cv2.resize(face_img, (64, 64))  # resizing the image to 64x64
-                    resized_int_face_img = Image.fromarray(resized_face_img, 'RGB')  # converting float values in numpy array to int values (0-255)
-                    img_array = np.array(resized_int_face_img)  # converting the image to numpy array
-                    img_array = np.expand_dims(img_array, axis=0)  # converting three demnsional array to sigle demensional
-                    pred = face_recog_model.predict(img_array)  # passing the reshaped numpy array to the model and storing the probablity of class array
-                    id = pred.argmax()  # getting the index of the class which have the highest probablity
-                    name = users[id]  # getting the predicted user's name
-                    to = mails[id]  # getting the predicted user's mail
-                    detected_time[id] = datetime.now()  # updating the predicted time
-                    self.send_alert(id, name, to)  # calling the send_alert method which will send alert mail
+                # Only process every other frame of video to save time
+                if self.process_this_frame:
+                    # Find all the faces and face encodings in the current frame of video
+                    self.face_locations = face_recognition.face_locations(rgb_small_frame)
+                    self.face_encodings = face_recognition.face_encodings(rgb_small_frame, self.face_locations)
 
-                cv2.putText(img, str(name).upper() + " - " + str(pred[0][id]), (x, (y + h + 22)),
-                            cv2.FONT_HERSHEY_SIMPLEX, .7, (255, 255, 255), 2)  # showing the detected user's name over the face
+                    self.face_names = []
+                    for face_encoding in self.face_encodings:
+                        # See if the face is a match for the known face(s)
+                        matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+                        name = "Unknown"
 
-        ret, jpeg = cv2.imencode('.jpg', img)  # encoding np.arry to jpg image
+                        # use the known face with the smallest distance to the new face
+                        face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+                        best_match_index = np.argmin(face_distances)
+                        if matches[best_match_index]:
+                            name = known_face_names[best_match_index]
+
+#  --------------------------------------- Uncomment after updating the database -----------------------------------------------
+
+                            # self.send_alert(name, mails[best_match_index])
+
+#  --------------------------------------- Uncomment after updating the database -----------------------------------------------
+
+
+                        self.face_names.append(name)
+
+
+                self.process_this_frame = not self.process_this_frame
+
+                # Display the results
+                for (top, right, bottom, left), name in zip(self.face_locations, self.face_names):
+                    # Scale back up face locations since the frame we detected in was scaled to 1/4 size
+                    top *= 4
+                    right *= 4
+                    bottom *= 4
+                    left *= 4
+
+                    # Draw a box around the face
+                    cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
+
+                    # Draw a label with a name below the face
+                    cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
+                    font = cv2.FONT_HERSHEY_DUPLEX
+                    cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+                
+        ret, jpeg = cv2.imencode('.jpg', frame)  # encoding np.arry to jpg image
         return jpeg.tobytes()  # returing the jpg images as bytes
+
+#  ----------------------------------------- Email function currently unavialable ----------------------------------------------
 
     # using thread to send email which will be help full to show video with less lag
     def create_alert_thread(self, name, to):
